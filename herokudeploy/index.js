@@ -17,5 +17,5 @@ server.get('*',(req, res) =>{
 })
 
 server.listen(PORT, () => {
-  console.log(`**\nlistening on http://localhost:${PORT}\n**`)
+  console.log(`*\nlistening on http://localhost:${PORT}\n*`)
 })
