@@ -1,4 +1,4 @@
-require('dotenv').config()
+// require('dotenv').config()
 const express = require('express')
 const path = require('path')
 
@@ -13,7 +13,7 @@ server.get('/', (req, res) => {
 })
 //fallback endpoint that sends index.html
 server.get('*',(req, res) =>{
-    res.sendFile(paht.join(__dirname, 'client/build', 'index.html'))
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
 })
 
 server.listen(PORT, () => {
