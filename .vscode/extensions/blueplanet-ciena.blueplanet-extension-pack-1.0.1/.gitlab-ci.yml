@@ -1,0 +1,47 @@
+image: docker.io/node:current
+stages:
+  - build
+  - release
+
+build:
+  stage: build
+  script:
+    - npm set unsafe-perm true
+    - npm i
+    - npx vsce package --baseContentUrl=https://developer.blueplanet.com/assets/vscode/extensionpack/ --baseImagesUrl=https://developer.blueplanet.com/assets/vscode/extensionpack/ --out blueplanet-extension-pack-$CI_COMMIT_SHORT_SHA-$CI_JOB_ID.vsix
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - ./*.vsix
+  tags:
+    - docker
+  except:
+    - tags
+
+build-master:
+  stage: release
+  script:
+    - npm set unsafe-perm true
+    - npm i
+    - npx vsce package --baseContentUrl=https://developer.blueplanet.com/assets/vscode/extensionpack/ --baseImagesUrl=https://developer.blueplanet.com/assets/vscode/extensionpack/
+    - npx vsce publish -p $VSCE_TOKEN --baseContentUrl=https://developer.blueplanet.com/assets/vscode/extensionpack/ --baseImagesUrl=https://developer.blueplanet.com/assets/vscode/extensionpack/
+  artifacts:
+    expire_in: 1 year
+    paths:
+      - ./*.vsix
+  tags:
+    - docker
+  only:
+    - tags
+
+publish-docs:
+  image: python:alpine
+  stage: release
+  script:
+    - pip3 install awscli --upgrade
+    - aws s3 cp ./README.md s3://$BUCKET_NAME/assets/vscode/extensionpack/README.md
+    - aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths '/assets/vscode/extensionpack/*'
+  tags:
+    - docker
+  only:
+    - tags

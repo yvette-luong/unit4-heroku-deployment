@@ -1,0 +1,27 @@
+## Answer Interview Questions
+
+1. What is React JS and what problems does it solve? Support your answer with concepts introduced in class and from your personal research on the web.
+
+ Re-renders on any change of state 
+-	User interface component library
+o	Library built in JS to buildout user interfaces
+o	We use things called components to build user interfaces
+-	Built by the team at facebook to deal with complex state
+-	NOT A FRAMEWORK
+o	A library that does one thing really well which is render UI
+-	Scalabale,reusable and fun to write.
+o	Everything is a component, used to compose out our applications
+
+2. Describe component state.
+
+- When the Component mounts and then changes from mutations in time (mostly generated from user events) that is when the state starts with a default value.
+
+3. Describe props.
+
+- A Component's configuration are props, which are received from above and immutable.
+
+4. What are side effects, and how do you sync effects in a React component to changes of certain state or props?
+
+- The affections outside the scope of function being execute is side effect.
+
+- To changes of certain state or props : whenever props change, we will set the state inside useEffect.

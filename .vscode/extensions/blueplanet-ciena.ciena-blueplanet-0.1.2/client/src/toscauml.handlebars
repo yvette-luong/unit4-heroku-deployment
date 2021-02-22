@@ -1,0 +1,33 @@
+@startuml TOSCA
+namespace {{tpackage}} {
+{{#each resourceTypes }}
+  class {{@key}} <<(R, LightBlue)>> {
+    {{description}}
+    == Properties ==
+    {{#each properties}}
+    {{icon}} {{#if required }}<b>{{/if}}{{@key}} : {{type}}{{#if required }}</b>{{/if}}
+    {{/each}}
+    .. Interfaces ..
+    {{#each tinterfaces}}
+    {{@key}}(
+    {{~#each inputs ~}}
+    {{~#if @first}}{{@key}}: {{type}}{{else}}, {{@key}}: {{type}}{{/if}}
+    {{~/each ~}}
+    ){{#if outputs}}: { {{~#each outputs}}{{#if @first}}{{@key}}: {{type}}{{else}}, {{@key}}: {{type}}{{/if}}{{/each~}} }{{/if}}
+    {{/each}}
+  }
+{{/each}}
+{{#each inheritances}}
+  {{from}} <|-- {{to}}
+{{/each}}
+}
+
+{{#each refs}}
+namespace {{@key}} {
+{{#each resourceTypes }}
+  class {{@key}} <<(R, LightBlue)>> {
+  }
+{{/each}}
+}
+{{/each}}
+@enduml

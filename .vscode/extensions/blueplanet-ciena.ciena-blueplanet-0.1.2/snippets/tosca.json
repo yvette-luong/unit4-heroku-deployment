@@ -1,0 +1,464 @@
+{
+  "Definition Module": {
+    "prefix": [
+      "dm",
+      "definition-module"
+    ],
+    "body": [
+      "\"\\$schema\"   = \"http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#\"",
+      "title       = \"${1:DefinitionTitle}\"",
+      "package     = ${2:exampe}",
+      "version     = \"1.0\"",
+      "description = \"\"\"",
+      "${3:This TOSCA document defines...}",
+      "\"\"\"",
+      "",
+      "authors     = [",
+      "\t\"${4:Developer (developer@blueplanet.com)}\"",
+      "]",
+      "",
+      "${5|resourceTypes,serviceTemplates,propertyTypes,capabilityTypes,relationshipTypes|} {",
+      "\t${0}",
+      "}"
+    ],
+    "description": "TOSCA Definition Module"
+  },
+  "Imports Block": {
+    "prefix": [
+      "imports",
+      "imb"
+    ],
+    "body": [
+      "imports {",
+      "\t${1:Alias} = ${2:package}.${3|resourceTypes,serviceTemplates,propertyTypes,capabilityTypes,relationshipTypes|}.${4:ArtifactName}",
+      "}"
+    ],
+    "description": "TOSCA Imports Block & Import"
+  },
+  // "Import": {
+  //   "prefix": [
+  //     "import",
+  //     "imp"
+  //   ],
+  //   "body": [
+  //     "${1:Alias} = ${2:package}.${3|resourceTypes,serviceTemplates,propertyTypes,capabilityTypes,relationshipTypes|}.${4:ArtifactName}"
+  //   ],
+  //   "description": "TOSCA Import Statement"
+  // },
+  // "Artifact Types": {
+  //   "prefix": [
+  //     "atsb",
+  //     "artifactTypes"
+  //   ],
+  //   "body": [
+  //     "${1|resourceTypes,serviceTemplates,propertyTypes,capabilityTypes,relationshipTypes|} {",
+  //     "\t${0}",
+  //     "}"
+  //   ],
+  //   "description": "TOSCA Artifact Types Block"
+  // },
+  "Resource Type Definition": {
+    "prefix": [
+      "rt",
+      "resourceType"
+    ],
+    "body": [
+      "${1:ResourceType} {",
+      "\ttitle       = ${2:Resource Type}",
+      "\tdescription = ${3:Resource type example}",
+      "\tderivedFrom = ${4:tosca.resourceTypes.Root}",
+      "\tproperties {",
+      "\t\t${0}",
+      "\t}",
+      "}"
+    ],
+    "description": "TOSCA Resource Type Defintion"
+  },
+  "Service Template Definition": {
+    "prefix": [
+      "st",
+      "serviceTemplate"
+    ],
+    "body": [
+      "${1:Service} {",
+      "\ttitle       = ${2:Service Title}",
+      "\tdescription = ${3:Service example}",
+      "\timplements  = ${4:package}.resourceTypes.${5:ResourceType}",
+      "\t${6|resources,plans|} {",
+      "\t\t${0}",
+      "\t}",
+      "}"
+    ],
+    "description": "TOSCA Service Template Definition"
+  },
+  "Capability Definition": {
+    "prefix": [
+      "cd",
+      "capability"
+    ],
+    "body": [
+      "${1:Capability} {",
+      "\tderivedFrom = ${2:tosca}.capabilityTypes.${3:CapabilityType}",
+      "\ttitle       = ${4:Capability Title}",
+      "\tdescription = ${5:Capability description}",
+      "}${0}"
+    ]
+  },
+  "Relationship Definition": {
+    "prefix": [
+      "rd",
+      "Relationship"
+    ],
+    "body": [
+      "${1:Relationship} {",
+      "\tderivedFrom = ${2:tosca}.relationshipTypes.${3:RelationshipType}",
+      "\ttitle       = ${4:Relationship Title}",
+      "\tdescription = ${5:Relationship description}",
+      "}${0}"
+    ]
+  },
+  "Property Definition": {
+    "prefix": [
+      "pr",
+      "prop"
+    ],
+    "body": [
+      "${1:property} {",
+      "\ttitle       = ${2:Property}",
+      "\tdescription = ${3:Property Description}",
+      "\ttype        = ${4|array,boolean,integer,null,number,object,string|}",
+      "}${0}"
+    ],
+    "description": "TOSCA Property"
+  },
+  // "Title Attribute": {
+  //   "prefix": [
+  //     "ti",
+  //     "title"
+  //   ],
+  //   "body": [
+  //     "title = ${1:Title}"
+  //   ]
+  // },
+  // "Description Attribute": {
+  //   "prefix": [
+  //     "des",
+  //     "description"
+  //   ],
+  //   "body": [
+  //     "description = ${1:description}"
+  //   ]
+  // },
+  // "Abstract Attribute": {
+  //   "prefix": [
+  //     "abs",
+  //     "abstract"
+  //   ],
+  //   "body": [
+  //     "abstract = ${1|true,false|}"
+  //   ]
+  // },
+  // "Final Attribute": {
+  //   "prefix": [
+  //     "fin",
+  //     "final"
+  //   ],
+  //   "body": [
+  //     "final = ${1|true,false|}"
+  //   ]
+  // },
+  // "DerivedFrom Attribute": {
+  //   "prefix": [
+  //     "der",
+  //     "derived",
+  //     "derivedfrom"
+  //   ],
+  //   "body": [
+  //     "derviedFrom = [$0]"
+  //   ]
+  // },
+  // "Properties Attribute": {
+  //   "prefix": [
+  //     "prs"
+  //   ]
+  // },
+  // "Capabilities Attribute": {
+  //   "prefix": [
+  //     "cap",
+  //     "capabilities"
+  //   ],
+  //   "body": [
+  //     "capabilities = {",
+  //     "\t${0}",
+  //     "}"
+  //   ]
+  // },
+  // "Requirements Attribute": {
+  //   "prefix": [
+  //     "req",
+  //     "requirements"
+  //   ],
+  //   "body": [
+  //     "requirements = {",
+  //     "\t${0}",
+  //     "}"
+  //   ]
+  // },
+  // "Interfaces Attribute": {
+  //   "prefix": [
+  //     "inte",
+  //     "interfaces"
+  //   ],
+  //   "body": [
+  //     "interfaces = {",
+  //     "\t${0}",
+  //     "}"
+  //   ]
+  // },
+  // "Type Attribute": {
+  //   "prefix": [
+  //     "ty",
+  //     "type"
+  //   ],
+  //   "body": [
+  //     "type = ${1|string,integer,array,object,boolean,null,number|}"
+  //   ]
+  // },
+  // "PropertyType Attribute": {
+  //   "prefix": [
+  //     "pt",
+  //     "propertytype"
+  //   ],
+  //   "body": [
+  //     "propertyType = ${1:package}.propertyTypes.${2:propertyType}"
+  //   ]
+  // },
+  // "Format Attribute": {},
+  // "Output Attribute": {
+  //   "prefix": [
+  //     "out",
+  //     "output"
+  //   ],
+  //   "body": [
+  //     "output = ${1|true,false|}"
+  //   ]
+  // },
+  // "Config Attribute": {
+  //   "prefix": [
+  //     "con",
+  //     "config"
+  //   ],
+  //   "body": [
+  //     "config = ${1|true,false|}"
+  //   ]
+  // },
+  // "Updatable Attribute": {
+  //   "prefix": [
+  //     "upd",
+  //     "updatable"
+  //   ],
+  //   "body": [
+  //     "updatable = ${1|true,false|}"
+  //   ]
+  // },
+  // "Optional Attribute": {
+  //   "prefix": [
+  //     "opt",
+  //     "optional"
+  //   ],
+  //   "body": [
+  //     "optional = ${1|true,false|}"
+  //   ]
+  // },
+  // "Default Attribute": {
+  //   "prefix": [
+  //     "def",
+  //     "default"
+  //   ],
+  //   "body": [
+  //     "default = ${1:Default value}"
+  //   ]
+  // },
+  // "Obfuscate Attribute": {
+  //   "prefix": [
+  //     "obf",
+  //     "obfuscate"
+  //   ],
+  //   "body": [
+  //     "obfuscate = ${1|true,false|}"
+  //   ]
+  // },
+  // "Store Attribute": {
+  //   "prefix": [
+  //     "sto",
+  //     "store"
+  //   ],
+  //   "body": [
+  //     "store = ${1|true,false|}"
+  //   ]
+  // },
+  // "History Attribute": {
+  //   "prefix": [
+  //     "his",
+  //     "histor"
+  //   ],
+  //   "body": [
+  //     "history = ${1|true,false|}"
+  //   ]
+  // },
+  // "FullText Attribute": {
+  //   "prefix": [
+  //     "ful",
+  //     "fulltext"
+  //   ],
+  //   "body": [
+  //     "fulltext = ${1|true,false|}"
+  //   ]
+  // },
+  // "Units Attribute": {
+  //   "prefix": [
+  //     "uni",
+  //     "units"
+  //   ],
+  //   "body": [
+  //     "units = ${1:Unit}"
+  //   ]
+  // },
+  // "Minimum Attribute": {
+  //   "prefix": [
+  //     "min",
+  //     "minimum"
+  //   ],
+  //   "body": [
+  //     "minimum = ${1:Min Value}"
+  //   ]
+  // },
+  // "Maximum Attribute": {
+  //   "prefix": [
+  //     "max",
+  //     "maximum"
+  //   ],
+  //   "body": [
+  //     "maximum = ${1:Max Value}"
+  //   ]
+  // },
+  // "Items Attribute": {
+  //   "prefix": [
+  //     "ite",
+  //     "items"
+  //   ],
+  //   "body": [
+  //     "items {",
+  //     "\ttype       = object",
+  //     "\tproperties {",
+  //     "\t\t${0}",
+  //     "\t}"
+  //   ]
+  // },
+  // "ResourceTypes Attribute": {
+  //   "prefix": [
+  //     "rts",
+  //     "resourcetypes"
+  //   ],
+  //   "body": [
+  //     "${1:tosca}.resourceTypes.${2:resourcetypes}"
+  //   ]
+  // },
+  // "Inputs Attribute": {
+  //   "prefix": [
+  //     "inp",
+  //     "inputs"
+  //   ],
+  //   "body": [
+  //     "inputs = {",
+  //     "\t${0}",
+  //     "}"
+  //   ]
+  // },
+  // "Outputs Attribute": {},
+  "ExecutionGroup Attribute": {
+    "prefix": [
+      "exe",
+      "executiongroup"
+    ],
+    "body": [
+      "executionGroup {",
+      "\ttype       = string",
+      "\ttitle =  ${1:Execution group}",
+      "\tdescription = ${2:Execution Group this operation belongs to}",
+      "\t}${0}"
+    ]
+  },
+  // "InternalOnly Attribute": {
+  //   "prefix": [
+  //     "int",
+  //     "internalonly"
+  //   ],
+  //   "body": [
+  //     "internalonly = ${1|true,false|}"
+  //   ]
+  // },
+  // "Implements Attribute": {
+  //   "prefix": [
+  //     "impl",
+  //     "implements"
+  //   ],
+  //   "body": [
+  //     "implements = ${1:tosca}.resourceTtypes.${2:resourcetype}"
+  //   ]
+  // },
+  // "Resources Attribute": {},
+  // "Trigger Attribute": {
+  //   "prefix": [
+  //     "tri",
+  //     "trigger"
+  //   ],
+  //   "body": [
+  //     "trigger = {",
+  //     "\t${0}",
+  //     "}"
+  //   ]
+  // },
+  "Plans Attribute": {
+    "prefix": [
+      "pl",
+      "plan"
+    ],
+    "body": [
+      "${1:PlanType} {",
+      "\ttype = remote",
+      "\tlanguage = python",
+      "\tpath = \"${3:PythonPath}\"",
+      "}${0}"
+    ]
+  },
+  "Interfaces Attribute": {
+    "prefix": [
+      "interfaces"
+    ],
+    "body": [
+      "interfaces {",
+      "\t${0}",
+      "}"
+    ],
+    "description": "TOSCA Resource Type Interfaces Block"
+  },
+  "Interfaces": {
+    "prefix": [
+      "interface"
+    ],
+    "body": [
+      "${1:MyInterface} {",
+      "\ttitle = ${2:MyInterface}",
+      "\tdescription = ${3:My Interface Description}",
+      "\tinputs {",
+      "\t\t${0}",
+      "\t}",
+      "\toutputs {",
+      "\t\t",
+      "\t}",
+      "}"
+    ],
+    "description": "TOSCA Resource Type Interface Definition"
+  }
+}

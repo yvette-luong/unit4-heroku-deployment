@@ -1,0 +1,43 @@
+{
+	"name": "night-blue-theme",
+	"displayName": "night blue theme",
+	"description": "a dark theme with blue highlights with support for c",
+	"version": "0.1.2",
+	"publisher": "LuanVSO",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/LuanVSO/vscode-night-blue-theme"
+	},
+	"engines": {
+		"vscode": "^1.41.0"
+	},
+	"categories": [
+		"Themes"
+	],
+	"keywords": [
+		"dark",
+		"night",
+		"theme",
+		"blue"
+	],
+	"icon": "assets/vscode-night-icon.png",
+	"homepage": "https://github.com/LuanVSO/vscode-night-blue-theme",
+	"contributes": {
+		"themes": [
+			{
+				"label": "night blue theme",
+				"uiTheme": "vs-dark",
+				"path": "./themes/night blue theme-color-theme.json"
+			}
+		]
+	},
+	"scripts": {
+		"package": "vsce package",
+		"publish": "vsce publish"
+	},
+	"__metadata": {
+		"id": "f3de57d4-1ddc-4bec-8ad2-6471e1d01334",
+		"publisherId": "7fa27af0-b80d-401f-ba0a-3d6c5d240233",
+		"publisherDisplayName": "LuanVSO"
+	}
+}

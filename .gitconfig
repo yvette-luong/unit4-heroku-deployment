@@ -1,0 +1,10 @@
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[user]
+	name = yvette-luong
+	email = 63530290+yvette-luong@users.noreply.github.com
+[gui]
+	recentrepo = C:/Users/Hang/hello

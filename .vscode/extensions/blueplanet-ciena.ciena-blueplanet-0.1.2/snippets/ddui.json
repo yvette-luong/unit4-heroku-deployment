@@ -1,0 +1,131 @@
+{
+	"DDUI Detail View": {
+		"prefix": [
+			"ddui-detail",
+			"ddui-high",
+			"ddui-low"
+		],
+		"body": [
+			"{",
+			"\t\"version\": \"2.0\",",
+			"\t\"type\": \"detail\",",
+			"\t\"cells\": [",
+			"\t\t{",
+			"\t\t\t\"label\": \"${1:Label}\"",
+			"\t\t\t\"children\": [",
+			"\t\t\t\t{",
+			"\t\t\t\t\t\"model\": \"${2:model}\"",
+			"\t\t\t\t}",
+			"\t\t\t]",
+			"\t\t}",
+			"\t]",
+			"}"
+		],
+		"description": "DDUI Detail UI Schema - For high.json, low.json, and detail.json forms"
+	},
+	"DDUI Form View": {
+		"prefix": [
+			"ddui-create",
+			"ddui-edit"
+		],
+		"body": [
+			"{",
+			"\t\"version\": \"2.0\",",
+			"\t\"type\": \"detail\",",
+			"\t\"cells\": [",
+			"\t\t{",
+			"\t\t\t\"label\": \"${1:Label}\",",
+			"\t\t\t\"children\": [",
+			"\t\t\t\t{",
+			"\t\t\t\t\t\"model\": \"${2:model}\"${0}",
+			"\t\t\t\t}",
+			"\t\t\t]",
+			"\t\t}",
+			"\t]",
+			"}"
+		],
+		"description": "DDUI Form UI Schema - For form for create.json and edit.json forms"
+	},
+	"DDUI Cell": {
+		"prefix": [
+			"ddui-cell"
+		],
+		"body": [
+			"{",
+			"\t\"label\": \"${1:Label}\",",
+			"\t\"children\": [",
+			"\t\t{",
+			"\t\t\t\"model\": \"${2:model}\"${0}",
+			"\t\t}",
+			"\t]",
+			"}"
+		],
+		"description": "DDUI Cell Block"
+	},
+	"DDUI Cell Definition": {
+		"prefix": [
+			"ddui-cell-definition"
+		],
+		"body": [
+			"\"${1:definition}\": {",
+			"\t\"children\": [",
+			"\t\t{",
+			"\t\t\t\"model\": \"${2:model}\"${0}",
+			"\t\t}",
+			"\t]",
+			"}"
+		],
+		"description": "DDUI Cell Block"
+	},
+	"DDUI Child": {
+		"prefix": [
+			"ddui-child"
+		],
+		"body": [
+			"{",
+			"\t\"model\": \"${1:model}\"${0}",
+			"}"
+		],
+		"description": "DDUI Cell Block"
+	},
+	"DDUI Array Options": {
+		"prefix": [
+			"arrayOptions",
+			"ddui-arrayOptions"
+		],
+		"body": [
+			"\"arrayOptions\": {",
+			"\t\"autoAdd\": ${1|true,false|},",
+			"\t\"compact\": ${2|true,false|},",
+			"\t\"showLabel\": ${3|true,false|},",
+			"\t\"sortable\": ${4|true,false|},",
+			"\t\"itemCell\": {",
+			"\t\t${0:#Only For Object Arrays}",
+			"\t}",
+			"}"
+		],
+		"description": "DDUI Array Options"
+	},
+	"DDUI Format": {
+		"prefix": [
+			"format",
+			"ddui-format"
+		],
+		"body": [
+			"\"format\": \"${1|bgp-as,date,hex-string,int8,int16,int32,int64,ip-address,ipv4-address,ipv6-address,ipv4-interface,ipv4-prefix,netmask,port-number,time,uint8,uint16,uint32,url,vlan-id|}\"${0}"
+		],
+		"description": "DDUI Format Property"
+	},
+	"DDUI Renderer": {
+		"prefix": [
+			"renderer",
+			"ddui-renderer"
+		],
+		"body": [
+			"\"renderer\": {",
+			"\t\"name\": \"${1|boolean,button-group,checkbox-array,geolocation,image,json,link,multi-select,number,password,property-chooser,select,static,text,textarea,url|}\"",
+			"}${0}"
+		],
+		"description": "DDUI Renderer Property"
+	}
+}

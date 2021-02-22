@@ -1,0 +1,20 @@
+{
+	"name": "blueplanet-vscode-languageserver",
+	"description": "BP VSCode Extension Language Server",
+	"author": "Blue Planet",
+	"version": "0.0.1",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git@git.blueplanet.com:BluePlanet/DevTools/bp-vscode-extension.git"
+	},
+	"engines": {
+		"node": "*"
+	},
+	"dependencies": {
+		"vscode-languageserver": "^3.3.0",
+		"@pushcorn/hocon-parser": "^1.0.0",
+		"jsonschema": "^1.0.0"
+	},
+	"scripts": {}
+}

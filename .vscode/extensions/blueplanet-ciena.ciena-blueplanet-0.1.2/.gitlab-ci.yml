@@ -1,0 +1,52 @@
+image: docker.io/node:current
+stages:
+  - build
+  - release
+
+build-dev-vsix:
+  stage: build
+  script:
+    - bash json-schemas/fetch_json_schemas.sh
+    - npm set unsafe-perm true
+    - npm i
+    - npx vsce package --baseContentUrl=https://developer.blueplanet.com/assets/vscode/extension/ --baseImagesUrl=https://developer.blueplanet.com/assets/vscode/extension/ --out blueplanet-$CI_COMMIT_SHORT_SHA-$CI_JOB_ID.vsix
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - ./*.vsix
+  except:
+    - tags
+  tags:
+    - docker
+    - ciena
+
+build-release:
+  stage: release
+  script:
+    - bash json-schemas/fetch_json_schemas.sh
+    - npm set unsafe-perm true
+    - npm i
+    - npx vsce package --baseContentUrl=https://developer.blueplanet.com/assets/vscode/extension/ --baseImagesUrl=https://developer.blueplanet.com/assets/vscode/extension/
+    - npx vsce publish -p $VSCE_TOKEN --baseContentUrl=https://developer.blueplanet.com/assets/vscode/extension/ --baseImagesUrl=https://developer.blueplanet.com/assets/vscode/extension/
+  only:
+    - tags
+  artifacts:
+    expire_in: 1 years
+    paths:
+      - ./*.vsix
+  tags:
+    - docker
+    - ciena
+
+publish-docs:
+  image: python:alpine
+  stage: release
+  script:
+    - pip3 install awscli --upgrade
+    - aws s3 cp ./README.md s3://$BUCKET_NAME/assets/vscode/extension/README.md
+    - aws s3 sync ./docs/ s3://$BUCKET_NAME/assets/vscode/extension/docs/ --delete
+    - aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths '/assets/vscode/extension/*'
+  only:
+    - tags
+  tags:
+    - docker

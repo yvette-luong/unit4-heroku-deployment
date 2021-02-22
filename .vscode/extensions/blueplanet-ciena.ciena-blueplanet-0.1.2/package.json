@@ -1,0 +1,199 @@
+{
+	"name": "ciena-blueplanet",
+	"displayName": "Ciena: Blue Planet",
+	"description": "Ciena: Blue Planet Extension for Visual Studio Code",
+	"publisher": "blueplanet-ciena",
+	"author": "Blue Planet",
+	"license": "Apache-2.0",
+	"version": "0.1.2",
+	"preview": true,
+	"homepage": "https://git.blueplanet.com:BluePlanet/DevTools/bp-vscode-extension.git",
+	"icon": "docs/imgs/blueplanet-division-square.png",
+	"galleryBanner": {
+		"color": "#364450",
+		"theme": "dark"
+	},
+	"bugs": {
+		"url": "https://git.blueplanet.com:BluePlanet/DevTools/bp-vscode-extension.git",
+		"email": "devexchange@blueplanet.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://git.blueplanet.com:BluePlanet/DevTools/bp-vscode-extension.git"
+	},
+	"qna": "https://my.ciena.com/CienaPortal/s/topic/0TO0z000000cKlUGAU/blue-planet-devops",
+	"engines": {
+		"vscode": "^1.37.0"
+	},
+	"categories": [
+		"Other",
+		"Programming Languages",
+		"Snippets"
+	],
+	"keywords": [
+		"Blue Planet",
+		"TOSCA",
+		"DDUI Schema II",
+		"MDSO",
+		"Orchestrate"
+	],
+	"activationEvents": [
+		"onCommand:bp.createPullRequest",
+		"onCommand:bp.pushSSHKey",
+		"onCommand:bp.cloneModelDefinitions",
+		"onCommand:bp.onboardModelDefinitions",
+		"onCommand:bp.addBPServer",
+		"onCommand:bp.PreviewTOSCADiagram",
+		"onLanguage:tosca"
+	],
+	"main": "./client/out/extension",
+	"contributes": {
+		"configuration": {
+			"title": "Blue Planet",
+			"properties": {
+				"bp.servers": {
+					"type": "object",
+					"items": {
+						"type": "object",
+						"title": "Blue Planet Server Configuration",
+						"properties": {
+							"name": {
+								"type": "string",
+								"description": "Name for VS Code UI"
+							},
+							"ip": {
+								"type": "string",
+								"description": "Hostname or URL"
+							},
+							"username": {
+								"type": "string",
+								"description": "BP Username"
+							},
+							"password": {
+								"type": "string",
+								"description": "BP Password"
+							}
+						}
+					},
+					"default": {
+						"Blue Planet Evaluation Edition": {
+							"ip": "192.168.33.10",
+							"username": "admin",
+							"password": "adminpw",
+							"areas": {
+								"model-definitions": null
+							}
+						}
+					},
+					"description": "Blue Planet Server Configurations"
+				},
+				"bp.languageServerBPTosca.maxNumberOfProblems": {
+					"type": "number",
+					"default": 100,
+					"description": "Controls the maximum number of problems produced by the Blue Planet Tosca Lite language server."
+				},
+				"bp.languageServerBPTosca.bpSchemaVersion": {
+					"type": "string",
+					"default": "0",
+					"description": "The version of BPOcore to validate TOSCA against (0 means latests)"
+				}
+			}
+		},
+		"languages": [
+			{
+				"id": "tosca",
+				"aliases": [
+					"TOSCA",
+					"tosca"
+				],
+				"extensions": [
+					".tosca"
+				],
+				"configuration": "./language-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "tosca",
+				"scopeName": "source.tosca",
+				"path": "./syntaxes/tosca.tmLanguage.json"
+			}
+		],
+		"snippets": [
+			{
+				"language": "tosca",
+				"path": "./snippets/tosca.json"
+			},
+			{
+				"language": "json",
+				"path": "./snippets/ddui.json"
+			}
+		],
+		"commands": [
+			{
+				"command": "bp.createPullRequest",
+				"title": "Create Pull Request",
+				"category": "Blue Planet"
+			},
+			{
+				"command": "bp.pushSSHKey",
+				"title": "Push SSH Key",
+				"category": "Blue Planet"
+			},
+			{
+				"command": "bp.cloneModelDefinitions",
+				"title": "Clone Model Definitions",
+				"category": "Blue Planet"
+			},
+			{
+				"command": "bp.onboardModelDefinitions",
+				"title": "Onboard Model Definitions",
+				"category": "Blue Planet"
+			},
+			{
+				"command": "bp.addBPServer",
+				"title": "Add a BP server",
+				"category": "Blue Planet"
+			},
+			{
+				"command": "bp.PreviewTOSCADiagram",
+				"title": "Preview TOSCA UML",
+				"category": "Blue Planet"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"when": "editorLangId == tosca",
+					"command": "bp.PreviewTOSCADiagram",
+					"group": "Blue Planet"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -b",
+		"watch": "tsc -b -w",
+		"clean": "node rm node_modules/ client/node_modules/ server/node_modules/ client/out/ server/out/",
+		"postinstall": "cd client && npm install && cd ../server && npm install && cd .."
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^5.2.6",
+		"@types/node": "^10.12.21",
+		"@types/vscode": "^1.37.0",
+		"glob": "^7.1.4",
+		"rifraf": "latest",
+		"mocha": "^6.1.4",
+		"tslint": "^5.12.1",
+		"typescript": "^3.3.1",
+		"vscode-test": "^1.0.2",
+		"vsce": "^1.66.0"
+	},
+	"__metadata": {
+		"id": "f754d786-728b-4ab8-8c38-112a0d665541",
+		"publisherId": "8d75532c-c623-4e94-80b3-107a3c483bc4",
+		"publisherDisplayName": "Blue Planet"
+	}
+}

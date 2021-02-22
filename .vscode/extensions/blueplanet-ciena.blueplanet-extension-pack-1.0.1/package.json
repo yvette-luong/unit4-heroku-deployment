@@ -1,0 +1,50 @@
+{
+	"name": "blueplanet-extension-pack",
+	"displayName": "Ciena: Blue Planet Extension Pack",
+	"description": "Extension Pack for development on the Blue Planet Platform",
+	"publisher": "blueplanet-ciena",
+	"author": "Blue Planet",
+	"license": "Apache-2.0",
+	"version": "1.0.1",
+	"homepage": "https://git.blueplanet.com:BluePlanet/DevTools/bp-extension-pack.git",
+	"qna": "https://my.ciena.com/CienaPortal/s/topic/0TO0z000000cKlUGAU/blue-planet-devops",
+	"icon": "blueplanet-division-square.png",
+	"galleryBanner": {
+		"color": "#364450",
+		"theme": "dark"
+	},
+	"bugs": {
+		"url": "https://git.blueplanet.com:BluePlanet/DevTools/bp-vscode-extension.git",
+		"email": "devexchange@blueplanet.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://git.blueplanet.com/BluePlanet/DevTools/bp-extension-pack.git"
+	},
+	"engines": {
+		"vscode": "^1.39.0"
+	},
+	"categories": [
+		"Extension Packs"
+	],
+	"keywords": [
+		"Blue Planet"
+	],
+	"extensionPack": [
+		"blueplanet-ciena.ciena-blueplanet",
+		"ms-python.python",
+		"visualstudioexptteam.vscodeintellicode",
+		"samuelcolvin.jinjahtml",
+		"davidanson.vscode-markdownlint",
+		"redhat.vscode-yaml",
+		"AndyTruett.TextFSM-Syntax"
+	],
+	"devDependencies": {
+		"vsce": "^1.68.0"
+	},
+	"__metadata": {
+		"id": "f7d3a231-031b-4b3e-96bd-8bc8cceca58c",
+		"publisherId": "8d75532c-c623-4e94-80b3-107a3c483bc4",
+		"publisherDisplayName": "Blue Planet"
+	}
+}

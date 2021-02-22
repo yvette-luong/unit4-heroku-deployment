@@ -1,0 +1,66 @@
+{
+  "name": "textFSM Templates",
+  "patterns": [
+    {
+      "include": "#keywords"
+    }
+  ],
+  "repository": {
+    "keywords": {
+      "patterns": [
+        {
+          "comment": "Comment",
+          "name": "comment.line.number-sign.textFSM",
+          "match": "^\\s*#.*$"
+        },
+        {
+          "comment": "Value-Keyword",
+          "name": "keyword.other.textFSM",
+          "match": "^Value"
+        },
+        {
+          "comment": "Value-Option",
+          "name": "entity.name.type.textFSM",
+          "match": "((?>Filldown|Key|Required|List|Fillup),?)+"
+        },
+        {
+          "comment": "Value-Name",
+          "match": "\\b(\\w+?)\\b\\s*\\(.*+$",
+          "captures": {
+            "1": {
+              "name": "variable.textFSM"
+            }
+          }
+        },
+        {
+          "comment": "State-Name",
+          "name": "entity.name.textFSM",
+          "match": "^\\w+$"
+        },
+        {
+          "comment": "State-Value-Descriptor",
+          "name": "variable.textFSM",
+          "match": "\\$.+?\\}"
+        },
+        {
+          "comment": "State-Rule-Action-Error",
+          "name": "invalid.textFSM",
+          "match": "->\\sError"
+        },
+        {
+          "comment": "State-Rule-Action",
+          "match": "(->\\s*(Next|Continue)?\\s*(NoRecord|Record|Clearall|Clear)?)\\s+(\\w+)$",
+          "captures": {
+            "1": {
+              "name": "keyword.control.textFSM"
+            },
+            "4": {
+              "name": "entity.name.textFSM"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "scopeName": "text.textFSM"
+}
